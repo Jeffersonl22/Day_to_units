@@ -21,5 +21,8 @@ def validate_and_execute():
         print("Your input is not a valid number!")
 
 
-user_input = input("Hey user, enter a number of days and I will convert to hours!\n")
-validate_and_execute()
+user_input = ""
+while user_input != "exit":
+    user_input = input("Hey user, enter a number of days and I will convert to hours! \n (or enter exit for stop the "
+                       "program)\n")
+    validate_and_execute()
