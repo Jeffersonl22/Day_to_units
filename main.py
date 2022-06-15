@@ -1,18 +1,21 @@
-name_of_units = "hours"
-calculate_to_hours = 24
+def days_to_units(number_of_days, conversion_unit):
+    if conversion_unit == "hours":
+        return f"{number_of_days} days are {number_of_days * 24} hours"
+    elif conversion_unit == "minutes":
+        return f"{number_of_days} days are {number_of_days * 24 * 60} minutes"
+    elif conversion_unit == "seconds":
+        return f"{number_of_days} days are {number_of_days * 24 * 60 * 60} seconds"
 
-
-def days_to_units(number_of_days):
-    return f"{number_of_days} days are {number_of_days * calculate_to_hours} {name_of_units}"
+    else:
+        return "unsupported unit"
 
 
 def validate_and_execute():
     try:
-        user_input_number = int(number_of_days_element)
-
+        user_input_number = int(days_and_unit_dictionary["days"])
         # We want to do conversion only for positive integers
         if user_input_number > 0:
-            calculated_value = days_to_units(user_input_number)
+            calculated_value = days_to_units(user_input_number, days_and_unit_dictionary["unit"])
             print(calculated_value)
         elif user_input_number == 0:
             print("You entered a 0, please enter a valid positive number!")
@@ -24,8 +27,9 @@ def validate_and_execute():
 
 user_input = ""
 while user_input != "exit":
-    user_input = input("Hey user, enter a number of days as a comma separated list and I will convert to hours! \n ("
-                       "or enter exit for stop the program)\n")
-    list_of_days = user_input.split(", ")
-    for number_of_days_element in set(list_of_days):
-        validate_and_execute()
+    user_input = input("Hey user, enter a number of days and conversion unit\n")
+    days_and_unit = user_input.split(":")
+    print(days_and_unit)
+    days_and_unit_dictionary = {"days": days_and_unit[0], "unit": days_and_unit[1]}
+    print(days_and_unit_dictionary)
+    validate_and_execute()
