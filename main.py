@@ -24,8 +24,7 @@ def validate_and_execute():
         print("Your input is not a valid number!")
 
 
-user_input = ""
-while user_input != "exit":
+while True:
     user_input = input("Hey user, enter a number of days and conversion unit separate by :\n"
                        "(You can also tap exit for end the program)\n")
     if user_input == "exit":
